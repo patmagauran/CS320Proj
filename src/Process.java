@@ -4,6 +4,8 @@ public class Process {
     public Long timeRan;
     public Long lastTimeRun;
 
+
+
     public ProcessState processState;
 
     public Process(Long runTime) {
