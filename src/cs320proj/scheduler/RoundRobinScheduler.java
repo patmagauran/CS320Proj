@@ -1,20 +1,23 @@
-package scheduler;
+package cs320proj.scheduler;
+
+import cs320proj.Clock;
+import cs320proj.MyProcess;
 
 import java.util.Queue;
 import java.util.LinkedList;
 
-public class RoundRobinScheduler implements IScheduler{
+public class RoundRobinScheduler implements cs320proj.scheduler.IScheduler {
     
-    //Implement scheduler using simple Round Robin
+    //Implement cs320proj.scheduler using simple Round Robin
 
-    Queue<Process> processes = new LinkedList<>();
-    Queue<Process> done = new LinkedList<>(); //Remove once Auditor List is implemented!
+    public Queue<MyProcess> processes = new LinkedList<>();
+    Queue<MyProcess> done = new LinkedList<>(); //Remove once cs320proj.Auditor List is implemented!
     int timeSlice = 20; // adjust later!
 
     Clock c = new Clock();
 
     //Load list of programs
-    public void loadProgram(Queue<Process> p){
+    public void loadProgram(Queue<MyProcess> p){
         while(p.size()!=0){
             processes.add(p.remove());
         }
@@ -22,8 +25,8 @@ public class RoundRobinScheduler implements IScheduler{
 
     }
     //Get next program to run
-    public Queue<Process> runNext(){
-        Process currentProcess = processes.remove();
+    public Queue<MyProcess> runNext(){
+        MyProcess currentProcess = processes.remove();
 
         long startTick = c.getCurrentTick();
         while(((c.getCurrentTick()) - startTick < timeSlice) &&
@@ -32,7 +35,7 @@ public class RoundRobinScheduler implements IScheduler{
                         currentProcess.timeRan++;
         }
         if (currentProcess.timeRan >= currentProcess.runTime) {
-                done.add(currentProcess); //Change to Auditor list once implemented!
+                done.add(currentProcess); //Change to cs320proj.Auditor list once implemented!
         } else {
             currentProcess.lastTimeRun = c.getCurrentTick();
             processes.add(currentProcess);

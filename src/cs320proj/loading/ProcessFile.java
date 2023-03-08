@@ -1,4 +1,4 @@
-package loading;
+package cs320proj.loading;
 
 public class ProcessFile {
     //Defines the file and its features

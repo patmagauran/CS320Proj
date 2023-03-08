@@ -1,4 +1,6 @@
-public class Process {
+package cs320proj;
+
+public class MyProcess {
 
     public final Long runTime;
     public Long timeRan;
@@ -8,7 +10,7 @@ public class Process {
 
     public ProcessState processState;
 
-    public Process(Long runTime) {
+    public MyProcess(Long runTime) {
         this.runTime = runTime;
     }
     //Manages state of the process

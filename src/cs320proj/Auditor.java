@@ -1,9 +1,11 @@
+package cs320proj;
+
 import java.util.List;
 
 public class Auditor {
 
     public List<AuditRecord> auditRecords;
-    //Recieves List of completed processes from Main program
+    //Receives List of completed processes from cs320proj.Main program
     //Converts them to audit records
     //Writes them out in analyzable format(CSV?)
 

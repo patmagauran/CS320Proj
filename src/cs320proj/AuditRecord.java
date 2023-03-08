@@ -1,3 +1,5 @@
+package cs320proj;
+
 public class AuditRecord {
 
     public int PID;
