@@ -13,5 +13,8 @@ public interface IScheduler {
     //Get next program to run
     public Queue<MyProcess> runNext();
     //Maintain state of programs
+    public Queue<MyProcess> getDoneList();
+
+    public long getCurrentTick();
 
 }

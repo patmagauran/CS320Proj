@@ -11,8 +11,21 @@ public class RoundRobinScheduler implements cs320proj.scheduler.IScheduler {
     //Implement cs320proj.scheduler using simple Round Robin
 
     public Queue<MyProcess> processes = new LinkedList<>();
+
+    public Queue<MyProcess> getDoneList() {
+        return done;
+    }
+
+    @Override
+    public long getCurrentTick() {
+        return c.getCurrentTick();
+    }
+
+    public RoundRobinScheduler(int timeSlice) {
+        this.timeSlice = timeSlice;
+    }
     Queue<MyProcess> done = new LinkedList<>(); //Remove once cs320proj.Auditor List is implemented!
-    int timeSlice = 20; // adjust later!
+    int timeSlice;// adjust later!
 
     Clock c = new Clock();
 
@@ -29,6 +42,8 @@ public class RoundRobinScheduler implements cs320proj.scheduler.IScheduler {
         MyProcess currentProcess = processes.remove();
 
         long startTick = c.getCurrentTick();
+        currentProcess.totalTimeWait += startTick - currentProcess.lastTimeRun;
+        currentProcess.timesRan++;
         while(((c.getCurrentTick()) - startTick < timeSlice) &&
                 (currentProcess.timeRan < currentProcess.runTime)) {
                         c.tick();
