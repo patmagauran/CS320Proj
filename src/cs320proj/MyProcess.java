@@ -1,6 +1,6 @@
 package cs320proj;
 
-public class MyProcess {
+public class MyProcess implements Comparable<MyProcess> {
 
     public final Long runTime;
     public Long timeRan;
@@ -13,7 +13,7 @@ public class MyProcess {
 
     public final String processName;
 
-
+    public final int priority;
 
     public ProcessState processState;
 
@@ -27,15 +27,22 @@ public class MyProcess {
                 ", timesRan=" + timesRan +
                 ", totalTimeWait=" + totalTimeWait +
                 ", processName='" + processName + '\'' +
+                ", priority='" + priority + '\'' +
                 '}';
     }
 
-    public MyProcess(Long runTime, int processID, String processName) {
+    public MyProcess(Long runTime, int processID, String processName, int priority) {
         this.processID = processID;
         this.processName = processName;
+        this.priority = priority;
         this.timeRan = 0L;
         this.lastTimeRun=0L;
         this.runTime = runTime;
+    }
+
+    @Override
+    public int compareTo(MyProcess o) {
+        return this.priority - o.priority;
     }
     //Manages state of the process
 }

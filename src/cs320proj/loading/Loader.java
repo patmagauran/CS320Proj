@@ -23,19 +23,30 @@ public class Loader {
 
 	private ProcessRecord parseLine(String line) throws Exception {
 		String[] lineArr = line.split(" ");
+		int priority = 0;
 		if (lineArr.length < 2) {
 			throw new Exception("Only one field provided in process record line!");
 		}
-		if (lineArr.length > 2) {
+		if (lineArr.length > 3) {
 			throw new Exception("More than 2 fields provided in process record line!");
+
 		}
+		if (lineArr.length > 2) {
+			try {
+				priority = Integer.parseInt(lineArr[2]);
+			} catch (NumberFormatException e) {
+				throw new Exception("Third Field should be a number!", e);
+			}
+
+		}
+
 		long runTime = 0L;
 		try {
 			runTime = Long.parseLong(lineArr[1]);
 		} catch (NumberFormatException e) {
 			throw new Exception("Second Field should be a number!", e);
 		}
-		return new ProcessRecord(runTime, lineArr[0]);
+		return new ProcessRecord(runTime, lineArr[0], priority);
 	}
 
 	private List<String> readFileLines(String fileName) throws Exception {

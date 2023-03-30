@@ -1,5 +1,6 @@
 package cs320proj.scheduler;
 
+import cs320proj.Clock;
 import cs320proj.MyProcess;
 
 import java.util.Queue;
@@ -10,11 +11,14 @@ public interface IScheduler {
 
     //Load list of programs
     public void loadProgram(Queue<MyProcess> p);
+
+    public Clock getClock();
     //Get next program to run
     public Queue<MyProcess> runNext();
     //Maintain state of programs
     public Queue<MyProcess> getDoneList();
 
     public long getCurrentTick();
+    public Queue<MyProcess> getProcesses();
 
 }

@@ -3,21 +3,20 @@ package cs320proj.scheduler;
 import cs320proj.Clock;
 import cs320proj.MyProcess;
 
-import java.util.Queue;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
-public class RoundRobinScheduler implements cs320proj.scheduler.IScheduler {
-    
+public class PriorityScheduler implements IScheduler {
+
     //Implement cs320proj.scheduler using simple Round Robin
 
-    public Queue<MyProcess> processes = new LinkedList<>();
-
-    public Queue<MyProcess> getProcesses() {
-        return processes;
-    }
-
+    public PriorityQueue<MyProcess> processes = new PriorityQueue<>();
     public Queue<MyProcess> getDoneList() {
         return done;
+    }
+    public Queue<MyProcess> getProcesses() {
+        return processes;
     }
 
     @Override
@@ -25,7 +24,7 @@ public class RoundRobinScheduler implements cs320proj.scheduler.IScheduler {
         return c.getCurrentTick();
     }
 
-    public RoundRobinScheduler(int timeSlice) {
+    public PriorityScheduler(int timeSlice) {
         this.timeSlice = timeSlice;
     }
     Queue<MyProcess> done = new LinkedList<>(); //Remove once cs320proj.Auditor List is implemented!
