@@ -2,6 +2,7 @@ package cs320proj;
 
 import cs320proj.loading.Loader;
 import cs320proj.loading.ProcessRecord;
+import cs320proj.scheduler.HRRNScheduler;
 import cs320proj.scheduler.IScheduler;
 import cs320proj.scheduler.PriorityScheduler;
 import cs320proj.scheduler.RoundRobinScheduler;
@@ -31,11 +32,16 @@ public class Main {
             } else if (args.length >= 3) {
                 timeSlice = Integer.parseInt(args[0]);
                 inputFileName = args[1];
-                if (args[2].equals("p")) {
-                    scheduler = new PriorityScheduler(timeSlice);
-
-                } else {
-                    scheduler = new RoundRobinScheduler(timeSlice);
+                switch (args[2].toLowerCase()) {
+                    case "p":
+                        scheduler = new PriorityScheduler(timeSlice);
+                        break;
+                    case "h":
+                        scheduler = new HRRNScheduler();
+                        break;
+                    default:
+                        scheduler = new RoundRobinScheduler(timeSlice);
+                        break;
 
                 }
             } else {

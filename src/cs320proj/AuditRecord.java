@@ -12,10 +12,11 @@ public class AuditRecord {
     public Long avgWait;
 
     public Long waitingTime;
+    public double normalizedTurnAroundTime;
 
     public int numTurns;
 
-    public AuditRecord(int PID, String processName, Long totalTicks, Long runningTicks, Long avgWait, Long waitingTime, int numTurns) {
+    public AuditRecord(int PID, String processName, Long totalTicks, Long runningTicks, Long avgWait, Long waitingTime, int numTurns, double normalizedTurnAroundTime) {
         this.PID = PID;
         this.processName = processName;
         this.totalTicks = totalTicks;
@@ -23,6 +24,7 @@ public class AuditRecord {
         this.avgWait = avgWait;
         this.waitingTime = waitingTime;
         this.numTurns = numTurns;
+        this.normalizedTurnAroundTime = normalizedTurnAroundTime;
     }
 
     @Override
@@ -34,6 +36,7 @@ public class AuditRecord {
                 ", runningTicks=" + runningTicks +
                 ", avgWait=" + avgWait +
                 ", waitingTime=" + waitingTime +
+                ", normalizedTurnAroundTime=" + normalizedTurnAroundTime +
                 ", numTurns=" + numTurns +
                 '}';
     }

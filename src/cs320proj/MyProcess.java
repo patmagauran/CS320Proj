@@ -15,6 +15,8 @@ public class MyProcess implements Comparable<MyProcess> {
 
     public final int priority;
 
+    public double normalizedTurnaround = 0;
+
     public ProcessState processState;
 
     @Override
@@ -26,6 +28,7 @@ public class MyProcess implements Comparable<MyProcess> {
                 ", lastTimeRun=" + lastTimeRun +
                 ", timesRan=" + timesRan +
                 ", totalTimeWait=" + totalTimeWait +
+                ", normalizedTurnaround=" + normalizedTurnaround +
                 ", processName='" + processName + '\'' +
                 ", priority='" + priority + '\'' +
                 '}';

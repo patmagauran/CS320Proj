@@ -19,7 +19,7 @@ public class Auditor {
     public Auditor(Iterable<MyProcess> processes) {
         auditRecords = new ArrayList<>();
         for (MyProcess process : processes) {
-            AuditRecord ar = new AuditRecord(process.processID, process.processName, process.timeRan + process.totalTimeWait, process.timeRan, process.totalTimeWait / process.timesRan, process.totalTimeWait, process.timesRan);
+            AuditRecord ar = new AuditRecord(process.processID, process.processName, process.timeRan + process.totalTimeWait, process.timeRan, process.totalTimeWait / process.timesRan, process.totalTimeWait, process.timesRan, process.normalizedTurnaround);
             auditRecords.add(ar);
 
         }
