@@ -53,6 +53,10 @@ public class RoundRobinScheduler implements cs320proj.scheduler.IScheduler {
 
         long startTick = c.getCurrentTick();
         currentProcess.totalTimeWait += startTick - currentProcess.lastTimeRun;
+        
+        //Normalized Turnaround Time -> added
+        currentProcess.normalizedTurnaround = (double) (currentProcess.totalTimeWait + currentProcess.runTime) / currentProcess.runTime;
+        
         currentProcess.timesRan++;
         while(((c.getCurrentTick()) - startTick < timeSlice) &&
                 (currentProcess.timeRan < currentProcess.runTime)) {
